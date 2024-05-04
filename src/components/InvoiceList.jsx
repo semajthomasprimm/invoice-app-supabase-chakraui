@@ -37,7 +37,7 @@ function InvoiceList() {
         </Box>
         <Box>
           {invoices.length > 0 ? (
-            <TableContainer overflowX="scroll">
+            <TableContainer>
               <Table
                 variant="simple"
                 backgroundColor="white"
