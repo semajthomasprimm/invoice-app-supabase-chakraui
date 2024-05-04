@@ -3,6 +3,8 @@
 ![Main App](main-page.png)
 This is an invoice management app that allows users the create, view, update, and delete invoices. 
 
+[Live Demo](https://invoice-app-supabase-chakraui.netlify.app/)
+
 ## Table of contents
 
 - [Overview](#overview)
