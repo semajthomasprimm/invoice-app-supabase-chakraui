@@ -14,7 +14,7 @@ function ViewModal({ invoice, onClick }){
   
     return(
       <>
-        <Button onClick={handleClick} colorScheme='messenger' mr={{base: '1', md: '3'}} size={{base: 'sm'}}>View</Button>
+        <Button onClick={handleClick} colorScheme='blue' mr={{base: '1', md: '3'}} size={{base: 'sm'}}>View</Button>
         <Modal isOpen={isOpen} onClose={onClose} size='3xl'>
           <ModalOverlay />
           <ModalContent>
