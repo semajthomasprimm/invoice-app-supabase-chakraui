@@ -24,7 +24,7 @@ export const InvoiceProvider = ({ children }) => {
         if(data) setInvoices(data);
 
         if (error) {
-          console.error(error);
+          //console.error(error);
           return {error: 'Failed to create invoice.'}
       }
 
@@ -45,8 +45,7 @@ export const InvoiceProvider = ({ children }) => {
         }
 
 
-        let { data, error } = await supabase
-        .rpc('create_new_invoice', {
+        let { data, error } = await supabase.rpc('create_new_invoice', {
             invoice_data: invoiceData, 
             billto_data: billTo, 
             billfrom_data: billFrom, 
@@ -54,7 +53,7 @@ export const InvoiceProvider = ({ children }) => {
         })
 
         if (error) {
-            console.error(error);
+            //console.error(error);
             return {error: 'Failed to create invoice.'}
         }
         else {
@@ -77,17 +76,16 @@ export const InvoiceProvider = ({ children }) => {
         total: invoice.total
       }
   
-      let { data, error } = await supabase
-        .rpc('update_invoice', {
-          invoice_id_data: invoice.id,
-          invoice_data: invoiceData, 
-          billto_data: billTo, 
-          billfrom_data: billFrom, 
-          listitem_data: listItem
-        })
+      let { data, error } = await supabase.rpc('update_invoice', {
+        invoice_id_data: invoice.id,
+        invoice_data: invoiceData, 
+        billto_data: billTo, 
+        billfrom_data: billFrom, 
+        listitem_data: listItem
+      })
   
       if (error) {
-        console.error(error);
+        //console.error(error);
         return {error: 'Failed to update invoice.'};
       } else {
         fetchInvoices();
@@ -99,7 +97,7 @@ export const InvoiceProvider = ({ children }) => {
       let { data, error } = await supabase.rpc('delete_invoice', {invoice_id_data: invoice.id});
 
       if (error) {
-        console.error(error);
+        //console.error(error);
         return {error: 'Failed to delete invoice.'};
       } else {
         fetchInvoices();

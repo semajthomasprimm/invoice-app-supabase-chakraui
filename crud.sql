@@ -43,17 +43,17 @@ begin
     new_invoice_id
   );
 
-  FOREACH item IN ARRAY listitem_data
-  LOOP
-    INSERT INTO public."listItem" (name, quantity, price, total, invoice_id)
-    VALUES (
+  for item in select * from jsonb_array_elements(listitem_data)
+  loop
+    insert into public."listItem" (name, quantity, price, total, invoice_id)
+    values (
       item->>'name', 
       (item->>'quantity')::integer, 
       (item->>'price')::numeric, 
       (item->>'total')::numeric, 
       new_invoice_id
     );
-  END LOOP;
+  end loop;
 end;
 $$ language plpgsql;
 
@@ -97,7 +97,7 @@ begin
     country = billto_data ->> 'country'
   where invoice_id = invoice_id_data;
 
-  foreach item in array listitem_data
+  for item in select * from jsonb_array_elements(listitem_data)
   loop
     update public."listItem"
     set
